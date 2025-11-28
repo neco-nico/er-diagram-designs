@@ -1,17 +1,17 @@
 ## 🗂️ このリポジトリについて
 
 - 業務でよく出るドメインを題材にした ER 図サンプル集です。現在の設計スキルを反映したものです
-- 現場で求められるスキル感と私自身の現在のスキルの間にギャップが生じるのを防ぐために作成しました
 - 初めて来た人でも以下に「どのファイルが何で、どこから読めば良いか」が直感的に分かるようにまとめています
+- 設計スキルの可視化により、転職などの場面におけるミスマッチを防ぐために作成しました
 
 ## 📦 ファイル一覧
 | ファイル名 | ドメイン | 工夫したポイント |
 | ----------------------------------------------------------------- | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `1-multi-tenant-subscription-system.drawio.pdf`　| マルチテナント×サブスク | ・**RLS 前提の行レベル隔離**（全テーブルに `tenant_id` を通し、同一テナント内参照を徹底）<br>・テナント→ユーザー→購読→プランの**一方向カーディナリティ**で境界を明確化 |
-| `2-bookstore-order-review-system.drawio.pdf` | EC：注文・在庫・レビュー | ・注文確定時に配送先を**スナップショット**（`order_addresses`）で保存<br>・合計金額などの派生値は非保持（計算＋キャッシュ）で不整合を回避 |
-| `3-social-platform-polymorphic-comments-notifications.drawio.pdf` | SNS：コメント/いいね/通知 | ・**CTI/TPT**：共通基底（entities/contents）＋子テーブルで“安全なポリモーフィック”を実現|
+| [`1-multi-tenant-subscription-system.drawio.pdf`](./1-multi-tenant-subscription-system.drawio.pdf)　| マルチテナント×サブスク | ・**RLS 前提の行レベル隔離**（全テーブルに `tenant_id` を通し、同一テナント内参照を徹底）<br>・テナント→ユーザー→購読→プランの**一方向カーディナリティ**で境界を明確化 |
+| [`2-bookstore-order-review-system.drawio.pdf`](./2-bookstore-order-review-system.drawio.pdf) | EC：注文・在庫・レビュー | ・注文確定時に配送先を**スナップショット**（`order_addresses`）で保存<br>・合計金額などの派生値は非保持（計算＋キャッシュ）で不整合を回避 |
+| [`3-social-platform-polymorphic-comments-notifications.drawio.pdf`](./3-social-platform-polymorphic-comments-notifications.drawio.pdf) | SNS：コメント/いいね/通知 | ・**CTI/TPT**：共通基底（entities/contents）＋子テーブルで“安全なポリモーフィック”を実現|
 
-## 今までのDB設計の学習で使った書籍
+## DB設計の学習で使っていた書籍
 - [達人に学ぶDB設計](https://www.amazon.co.jp/%E9%81%94%E4%BA%BA%E3%81%AB%E5%AD%A6%E3%81%B6DB%E8%A8%AD%E8%A8%88-%E5%BE%B9%E5%BA%95%E6%8C%87%E5%8D%97%E6%9B%B8-%E5%88%9D%E7%B4%9A%E8%80%85%E3%81%A7%E7%B5%82%E3%82%8F%E3%82%8A%E3%81%9F%E3%81%8F%E3%81%AA%E3%81%84%E3%81%82%E3%81%AA%E3%81%9F%E3%81%B8-%E3%83%9F%E3%83%83%E3%82%AF/dp/4798124702/ref=sr_1_3?crid=2TAGHDZLBYQ44&dib=eyJ2IjoiMSJ9.E9-nZU9VjTA1nyCWViW9e0_0RWUPdQ9XL7pgEbvIsDbGjHj071QN20LucGBJIEps.YXjUDdNX_aqV2F-nPcKNga_c3spctZ_hjBoHvNqJMBk&dib_tag=se&keywords=%E9%81%94%E4%BA%BA%E3%81%8B%E3%82%89%E5%AD%A6%E3%81%B6db&qid=1760404883&sprefix=%E9%81%94%E4%BA%BA%E3%81%8B%E3%82%89%2Caps%2C192&sr=8-3)
 - [失敗から学ぶRDBの正しい歩き方](https://www.amazon.co.jp/%E5%A4%B1%E6%95%97%E3%81%8B%E3%82%89%E5%AD%A6%E3%81%B6RDB%E3%81%AE%E6%AD%A3%E3%81%97%E3%81%84%E6%AD%A9%E3%81%8D%E6%96%B9-Software-Design-plus-%E6%9B%BD%E6%A0%B9/dp/4297104083/ref=sr_1_1?crid=1A028QQHNAIJY&dib=eyJ2IjoiMSJ9.THH0CV1OmBwERLpnuCVNBCtvbfEmDN9kH83GRJVEg4P1O7gAAkNEEopzC-t_rFf5bJhMk6rw8pji_b2AZW4kdbPHnFHwt9PtoJH1HqkSWU3eObVQQRHI5bNsG29frZ142Uo_NAH2tBJO3mesWWyffrvCRFqn4RT5Ftcv0ax4kOM.-YCj3VXkTHERjxcYIh3CbjTX-ZqNbIIA0xlRbo9IKV0&dib_tag=se&keywords=%E5%A4%B1%E6%95%97%E3%81%8B%E3%82%89%E5%AD%A6%E3%81%B6rdb%E3%81%AE%E6%AD%A3%E3%81%97%E3%81%84%E6%AD%A9%E3%81%8D%E6%96%B9&qid=1760404948&sprefix=%E5%A4%B1%E6%95%97%E3%81%8B%E3%82%89%2Caps%2C180&sr=8-1)
 - [達人に学ぶSQL徹底指南書](https://www.amazon.co.jp/%E9%81%94%E4%BA%BA%E3%81%AB%E5%AD%A6%E3%81%B6SQL%E5%BE%B9%E5%BA%95%E6%8C%87%E5%8D%97%E6%9B%B8-%E7%AC%AC2%E7%89%88-%E5%88%9D%E7%B4%9A%E8%80%85%E3%81%A7%E7%B5%82%E3%82%8F%E3%82%8A%E3%81%9F%E3%81%8F%E3%81%AA%E3%81%84%E3%81%82%E3%81%AA%E3%81%9F%E3%81%B8-CodeZine-BOOKS/dp/4798157821/ref=sr_1_2?crid=2TAGHDZLBYQ44&dib=eyJ2IjoiMSJ9.E9-nZU9VjTA1nyCWViW9e0_0RWUPdQ9XL7pgEbvIsDbGjHj071QN20LucGBJIEps.YXjUDdNX_aqV2F-nPcKNga_c3spctZ_hjBoHvNqJMBk&dib_tag=se&keywords=%E9%81%94%E4%BA%BA%E3%81%8B%E3%82%89%E5%AD%A6%E3%81%B6db&qid=1760404883&sprefix=%E9%81%94%E4%BA%BA%E3%81%8B%E3%82%89%2Caps%2C192&sr=8-2)
